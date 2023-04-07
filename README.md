@@ -1,2 +1,2 @@
 # workerPanel
-worker panel for hackaton
+worker panel for hackathon
