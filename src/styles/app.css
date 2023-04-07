@@ -1,0 +1,17 @@
+.ml-2 {
+    margin-left: 16px;
+}
+.save-btn{
+    box-sizing: border-box;
+    background: #81BBF1;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 12px;
+    border: none;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+.mr-2{
+    margin-right: 16px;
+}

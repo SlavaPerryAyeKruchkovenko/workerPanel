@@ -1,0 +1,38 @@
+.header-logo {
+    color: #110F67;
+    font-weight: 800;
+    line-height: 30px;
+    font-family: 'Inter', sans-serif;
+}
+.header {
+    padding: 12px 105px;
+    background: #81BBF1;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+}
+.pointer{
+    cursor: pointer;
+}
+.header-end-session{
+    background: #DADADA;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 28px;
+    padding: 0 12px;
+    border: none;
+    border-radius: 8px;
+}
+@media only screen and (max-width:768px) {
+    .header{
+        padding: 12px 35px;
+    }
+}
+@media only screen and (max-width:768px) {
+    .header{
+        padding: 12px;
+    }
+}

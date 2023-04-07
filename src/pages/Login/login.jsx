@@ -1,16 +1,14 @@
 import React from "react";
 import "./login.css";
 import backgroundImage from "@Assets/images/фон.png"
+import Header from "@Components/Header/Header.jsx";
 
 const Login = () => {
     const loginBody = {
         backgroundImage: 'url(' + backgroundImage + ')'
     }
     return(<div className="login">
-        <header className="login-header">
-            <span className="login-header-logo">ЦЧ</span>
-            <span className="login-header-logo ml-2">УГМК</span>
-        </header>
+        <Header/>
         <div className="login-body" style={loginBody}>
             <div className="login-body-content">
                 <span className="login-body-content-header">Войти</span>

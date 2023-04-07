@@ -1,0 +1,115 @@
+.drop-changer{
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    padding: 8% 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+.drop-changer-scheme{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #D9D9D9;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+}
+.drop-changer-select-btn{
+    width: 300px;
+    margin: 0 auto;
+    top: -36px;
+    position: absolute;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    background: #ABB6C8;
+    border: none;
+    border-radius: 8px;
+    font-size: 20px;
+    line-height: 36px;
+    padding: 0 32px;
+}
+.gates-list{
+    position: absolute;
+    top: -36px;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    border: 1px solid #ABB6C8;
+    border-radius: 8px;
+    max-height: 152px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-width: 300px;
+    width: 300px;
+}
+.gate-item{
+    margin: 2px 0;
+    border: 1px solid #ABB6C8;
+    font-size: 20px;
+    line-height: 36px;
+    font-family: "Inter", sans-serif;
+    text-align: center;
+    padding: 0 20px;
+    cursor: pointer;
+    border-radius: 2px;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+.gate-item:hover{
+    background: #ABB6C8;
+}
+::-webkit-scrollbar {
+    width: 6px; /* ширина для вертикального скролла */
+    height: 8px; /* высота для горизонтального скролла */
+    background-color: white;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #81BBF1;
+    border-radius: 8px;
+    box-shadow: inset 1px 1px 10px #ABB6C8;
+}
+@media only screen and (max-width:768px) {
+    .drop-changer{
+        padding: 10%;
+    }
+    .drop-changer-select-btn{
+        width: 250px;
+        padding: 0 6px;
+    }
+    .gates-list{
+        width: 250px;
+    }
+    .gate-item{
+        padding: 0 6px;
+    }
+}
+@media only screen and (max-width:450px) {
+    .drop-changer{
+        padding: 15%;
+    }
+    .drop-changer-select-btn{
+        width: 200px;
+        padding: 0 2px;
+    }
+    .gates-list{
+        width: 200px;
+    }
+    .gate-item{
+        padding: 0 2px;
+    }
+}
+@media only screen and (max-width:320px) {
+    .drop-changer{
+        padding: 20% 24px;
+    }
+    .drop-changer-select-btn{
+        width: 100%;
+    }
+    .gates-list{
+        width: 100%;
+    }
+}

@@ -10,28 +10,11 @@ body {
     box-sizing: border-box;
 }
 
-.login-header {
-    background: #81BBF1;
-    box-sizing: border-box;
-    width: 100%;
-    padding: 12px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-}
-
-.login-header-logo {
-    color: #110F67;
-    font-weight: 800;
-    line-height: 30px;
-    font-family: 'Inter', sans-serif;
-}
-
 .login-body {
     box-sizing: border-box;
     width: 100%;
     height: calc(100% - 54px);
-    padding: 72px 160px;
+    padding: 72px 180px;
 }
 
 .login-body-content {
@@ -55,7 +38,7 @@ body {
 }
 
 .login-body-form {
-    margin: 54px 139px 112px 139px;
+    margin: 54px 160px 112px 160px;
     justify-content: space-between;
     display: flex;
     flex-direction: column;
@@ -148,7 +131,4 @@ body {
     .login-body{
         padding: 10% 5%;
     }
-}
-.ml-2 {
-    margin-left: 16px;
 }
