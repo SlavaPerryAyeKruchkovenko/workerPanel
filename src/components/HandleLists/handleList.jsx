@@ -20,11 +20,9 @@ const HandleList = () => {
             name: "следующая машина"
         });
         if(saveRequests && saveRequests.length > 0){
-            const requestId = "request "+saveRequests[0].id;
+            const requestId = "request_"+saveRequests[0].id;
             const requestObj = $(`#${requestId}`);
-            console.log(`#${requestId}`)
             requestObj.addClass("accept-request");
-            console.log($('#request_1'));
         }
         offDragNDrop();
     }

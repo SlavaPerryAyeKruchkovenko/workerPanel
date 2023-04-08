@@ -49,9 +49,10 @@
 .body-auto{
     height: auto;
 }
-.accept-request{
-    color: green;
+.accept-request .request-name{
+    background: #90EE90;
 }
+
 @media only screen and (max-width:768px) {
     .handle-list{
         padding: 8% 24px;
