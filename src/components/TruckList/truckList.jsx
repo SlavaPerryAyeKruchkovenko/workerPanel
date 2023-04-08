@@ -1,10 +1,10 @@
 'use strict';
 
 import React, {useEffect} from "react";
-import "./handleList.css";
 import Request from "@Components/Request/request";
 import mock from "@Helpers/mock";
 import {X} from 'react-feather';
+import Truck from "@Components/Truck/truck";
 
 const $ = require('jquery');
 require('jquery-ui');
@@ -12,7 +12,7 @@ require('jquery-ui/ui/widgets/sortable');
 require('jquery-ui/ui/disable-selection');
 
 const TruckList = () => {
-    const [trucks,setTrucks] = React.useState([])
+    const [trucks, setTrucks] = React.useState([])
     const [truck, setTruck] = React.useState(null);
     const [haveError, setHaveError] = React.useState(false);
     const [errorText, setErrorText] = React.useState("error");
@@ -46,7 +46,7 @@ const TruckList = () => {
         if (haveError) {
             const interval = setInterval(() => {
                 const error = $("#error");
-                if(error){
+                if (error) {
                     setHaveError(false);
                     setErrorText("");
                 }
@@ -74,7 +74,7 @@ const TruckList = () => {
             <h2 className="handle-list-section-title">Новые погрузки</h2>
             <ul className="handle-list-first handle-list-object" id="firstList">
                 {
-                    trucks.map(request => (<Request request={request} key={"request" + request.id}/>))
+                    trucks.map(truck => (<Truck truck={truck} key={"truck " + truck.id}/>))
                 }
             </ul>
         </section>
@@ -83,7 +83,7 @@ const TruckList = () => {
             <ul className="handle-list-object" id="secondList">
 
             </ul>
-            <button type="button" className="handle-list-btn handle-list-next-btn" onClick={getBtnSubmit(btnState)}>
+            <button type="button" className="handle-list-btn handle-list-next-btn">
                 Впустить машину
             </button>
         </section>
