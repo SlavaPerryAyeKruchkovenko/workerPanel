@@ -3,7 +3,7 @@
     width: 100vw;
 }
 .storage-body{
-    height: calc(100% - 54px);
+    height: calc(100% - 55px);
     width: 100%;
     display: flex;
     justify-content: center;

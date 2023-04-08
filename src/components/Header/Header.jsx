@@ -2,7 +2,7 @@ import React from "react";
 import "./header.css";
 import "@Styles/app.css";
 
-const Header = ({haveEndSession = false, endSession,exit}) => {
+const Header = ({haveEndSession = false, endSession,haveExit=false,exit}) => {
     return (
         <header className="header">
             <div>
@@ -15,7 +15,11 @@ const Header = ({haveEndSession = false, endSession,exit}) => {
                         <button className="header-end-session mr-2 pointer" onClick={endSession}>Завершить смену</button>
                     )
                 }
-                <span className="header-logo pointer" onClick={exit}>Выход</span>
+                {
+                    haveExit && (
+                        <span className="header-logo pointer" onClick={exit}>Выход</span>
+                    )
+                }
             </div>
         </header>
     );

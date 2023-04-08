@@ -5,14 +5,15 @@ import "./storage.css";
 import Slider from "@Components/Slider/slider";
 
 const Storage = () => {
+    const [haveSession,setHaveSession] = React.useState(false)
     const loginBody = {
         backgroundImage: 'url(' + backgroundImage + ')'
     }
     return (
         <div className="storage">
-            <Header/>
+            <Header haveEndSession={haveSession} haveExit={true}/>
             <div className="storage-body" style={loginBody}>
-                <Slider/>
+                <Slider setHaveSession={setHaveSession}/>
             </div>
         </div>)
 }
