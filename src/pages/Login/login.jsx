@@ -14,9 +14,9 @@ const Login = () => {
                 <span className="login-body-content-header">Войти</span>
                 <form className="login-body-form">
                     <input placeholder="логин"/>
-                    <input placeholder="пороль"/>
+                    <input placeholder="пароль"/>
                     <div className="login-body-form-bottom">
-                        <a href="#" className="forgot-btn">не помню пороль</a>
+                        <a href="#" className="forgot-btn">Не помню пароль</a>
                         <button type="submit" className="submit-btn">Войти</button>
                     </div>
                 </form>
