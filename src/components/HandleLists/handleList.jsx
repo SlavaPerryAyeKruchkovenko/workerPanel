@@ -21,7 +21,10 @@ const HandleList = () => {
         });
         if(saveRequests && saveRequests.length > 0){
             const requestId = "request "+saveRequests[0].id;
-            $(`#${requestId}`).addClass("accept-request");
+            const requestObj = $(`#${requestId}`);
+            console.log(`#${requestId}`)
+            requestObj.addClass("accept-request");
+            console.log($('#request_1'));
         }
         offDragNDrop();
     }
@@ -41,7 +44,7 @@ const HandleList = () => {
         const requestsEl = $("#secondList").children();
         const saveRequests = [];
         for(let request of requestsEl){
-            const id = request.id.split(" ")[1];
+            const id = request.id.split("_")[1];
             const element = requests.find(x=>x.id === parseInt(id));
             saveRequests.push(element);
         }
