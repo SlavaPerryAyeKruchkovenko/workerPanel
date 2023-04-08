@@ -3,7 +3,7 @@ import "./request.css";
 
 const Request = ({request}) => {
     return (
-        <li className="request">
+        <li className="request" id={"request_"+request.id}>
             <span className="request-name">{request?request.name:''}</span>
             <div className="request-products">
                 {
