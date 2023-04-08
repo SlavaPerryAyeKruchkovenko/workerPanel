@@ -52,7 +52,32 @@
 .accept-request .request-name{
     background: #90EE90;
 }
-
+.alert{
+    transition: 2s ease;
+    z-index: 2;
+    align-items: center;
+    display: flex;
+    box-sizing: border-box;
+    color: #664d03;
+    background-color: #fff3cd;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 1rem 1rem;
+    border: 1px solid #ffecb5;
+    border-radius: 8px;
+}
+.close{
+    cursor: pointer;
+    z-index: 2;
+}
+.alert-icon{
+    margin-right: 0.5rem;
+    flex-shrink: 0;
+    vertical-align: middle;
+    box-sizing: border-box;
+    color: #664d03;
+}
 @media only screen and (max-width:768px) {
     .handle-list{
         padding: 8% 24px;

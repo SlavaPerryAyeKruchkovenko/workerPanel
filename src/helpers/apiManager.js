@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const apiManager = {
+    url:"http://10.68.44.33:3001",
     getConfig:(token=null) => {
         return {
             headers: {
@@ -9,7 +10,10 @@ const apiManager = {
             }
         }
     },
-    login: () => {
-        axios.post("http://10.68.44.33:3001/login",{},apiManager.getConfig());
+    login: (login,password) => {
+        axios.post("/auth/login",{
+            login: login,
+            password: password,
+        },apiManager.getConfig());
     }
 }
