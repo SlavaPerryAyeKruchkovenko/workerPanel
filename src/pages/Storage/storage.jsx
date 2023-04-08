@@ -12,7 +12,7 @@ const Storage = () => {
     return (
         <div className="storage">
             <Header haveEndSession={haveSession} haveExit={true}/>
-            <div className="storage-body" style={loginBody}>
+            <div className="storage-body" style={loginBody} id="storage">
                 <Slider setHaveSession={setHaveSession}/>
             </div>
         </div>)

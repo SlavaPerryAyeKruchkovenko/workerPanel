@@ -1,5 +1,6 @@
 import React, {useEffect} from "react";
 import "./dropChanger.css";
+const $ = require('jquery');
 
 const DropChanger = () => {
     const [isOpen, setIsOpen] = React.useState(false);
@@ -15,6 +16,7 @@ const DropChanger = () => {
         setIsOpen(true)
     }
     useEffect(() => {
+        $("#storage").removeClass("body-auto");
         setGates([
             {
                 id: 1,

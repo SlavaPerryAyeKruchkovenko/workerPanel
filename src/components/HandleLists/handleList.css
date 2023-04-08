@@ -44,4 +44,37 @@
     border-radius: 8px;
     padding: 6px 12px;
     background: #ABB6C8;
+    cursor: pointer;
+}
+.body-auto{
+    height: auto;
+}
+.accept-request{
+    color: green;
+}
+@media only screen and (max-width:768px) {
+    .handle-list{
+        padding: 8% 24px;
+    }
+    .handle-list-first{
+        max-height: calc(100% - 72px);
+    }
+    .handle-list-section-title{
+        overflow-wrap: anywhere;
+    }
+}
+@media only screen and (max-width:600px) {
+    .handle-list-section{
+        width: 100%;
+    }
+    .handle-list{
+        padding: 15% 24px;
+    }
+
+    .handle-list{
+        flex-direction: column;
+    }
+    .q-mt-2{
+        margin-top: 12px;
+    }
 }
