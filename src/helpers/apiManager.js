@@ -33,8 +33,8 @@ const apiManager = {
 
     admin_save: (payload) => {
         axios.post("http://10.68.44.55:3001/data/post", payload, apiManager.getConfig())
-    }
-}
+    },
+
 
     currentUser: (token) => {
         return axios.get(apiManager.url + "/user/me",  apiManager.getConfig(token));
@@ -45,4 +45,5 @@ const apiManager = {
         ))
     }
 }
+
 export default apiManager;
