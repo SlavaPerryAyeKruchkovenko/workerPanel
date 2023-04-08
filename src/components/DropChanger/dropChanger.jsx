@@ -5,7 +5,7 @@ const DropChanger = () => {
     const [isOpen, setIsOpen] = React.useState(false);
     const [gates, setGates] = React.useState([]);
     const [selectedGate,setSelectedGate] = React.useState({
-        name: "Выберете ворота",
+        name: "Выберите ворота",
     })
     const selectGate = (gate) => {
         setSelectedGate(gate);
@@ -18,19 +18,19 @@ const DropChanger = () => {
         setGates([
             {
                 id: 1,
-                name: "cеверные ворота",
+                name: "Северные ворота",
             },
             {
                 id: 2,
-                name: "восточные ворота",
+                name: "Восточные ворота",
             },
             {
                 id: 3,
-                name: "южные ворота",
+                name: "Южные ворота",
             },
             {
                 id: 4,
-                name: "западные ворота",
+                name: "Западные ворота",
             },
             {
                 id: 5,
