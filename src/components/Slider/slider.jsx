@@ -1,30 +1,35 @@
 import React from "react";
 import "./slider.css";
-import DropChanger from "@Components/DropChanger/dropChanger";
-import HandleList from "@Components/HandleLists/handleList";
 
-const Slider = ({setHaveSession}) => {
+const Slider = ({setHaveSession,slides=[]}) => {
     const [slide, setSlide] = React.useState(1);
     const [haveSave,setHaveSave] = React.useState(true);
     const openFirstFragment = () => {
-        setHaveSession(false);
+        if(setHaveSession){
+            setHaveSession(false);
+        }
         setSlide(1);
     }
     const openSecondFragment = () => {
-        setHaveSession(true);
+        if(setHaveSession){
+            setHaveSession(true);
+        }
         setSlide(2);
         setHaveSave(false);
     }
 
     const getSlides = (slide) => {
-        switch (slide) {
-            case 1:
-                return <DropChanger/>;
-            case 2:
-                return <HandleList/>;
-            default:
-                return "";
+        if(slides){
+            switch (slide) {
+                case 1:
+                    return slides[0];
+                case 2:
+                    return slides[1];
+                default:
+                    return "";
+            }
         }
+        return "";
     }
     return (
         <div className="slider">
