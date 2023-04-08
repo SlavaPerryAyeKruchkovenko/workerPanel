@@ -1,0 +1,57 @@
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.element {
+    --text-color: #110F67;
+}
+
+
+.login-body{
+    display: flex;
+    flex-direction: row;
+    gap: 3%;
+}
+
+.nav-bar{
+    background-color: white;
+    height: 100%;
+    width: 30%;
+    border-radius: 8px;
+
+    color: var(--text-color);
+    font-size: 18px;
+}
+
+.nav-bar__title{
+    font-weight: 700;
+    font-size: 28px;
+    padding-left: 10%;
+    padding-top: 5%;
+}
+
+.nav-bar__texts{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-left: 10%;
+    padding-top: 10%;
+}
+
+.nav-bar__texts__selected{
+    color: #CB694A;
+    font-weight: 600;
+}
+
+.upload-image{
+    background-color: white;
+    height: 100%;
+    width: 65%;
+    border-radius: 8px;
+    
+    font-family: 'Inter', sans-serif;
+    color: var(--text-color);
+    font-weight: 800;
+    line-height: 42px;
+}
