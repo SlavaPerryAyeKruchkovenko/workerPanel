@@ -4,7 +4,7 @@ import DropChanger from "@Components/DropChanger/dropChanger";
 import HandleList from "@Components/HandleLists/handleList";
 
 const Slider = ({setHaveSession}) => {
-    const [slide, setSlide] = React.useState(2);
+    const [slide, setSlide] = React.useState(1);
     const [haveSave,setHaveSave] = React.useState(true);
     const openFirstFragment = () => {
         setHaveSession(false);
