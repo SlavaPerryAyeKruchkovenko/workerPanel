@@ -1,14 +1,12 @@
 import React from "react";
 import "./header.css";
 import "@Styles/app.css";
+import zn from "@Assets/images/zn.png";
 
 const Header = ({haveEndSession = false, endSession,haveExit=false,exit}) => {
     return (
         <header className="header">
-            <div>
-                <span className="header-logo">ЦЧ</span>
-                <span className="header-logo ml-2">УГМК</span>
-            </div>
+            <img src={zn} className="header-logo"/>
             <div>
                 {
                     haveEndSession && (

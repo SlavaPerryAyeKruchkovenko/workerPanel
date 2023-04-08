@@ -11,7 +11,7 @@ const Slider = ({setHaveSession,slides=[]}) => {
         setSlide(1);
     }
     const openSecondFragment = () => {
-        if(setHaveSession){
+        if (setHaveSession) {
             setHaveSession(true);
         }
         setSlide(2);
@@ -37,7 +37,7 @@ const Slider = ({setHaveSession,slides=[]}) => {
                 getSlides(slide)
             }
             <div className="slider-btn">
-                <div className="point" onClick={openFirstFragment}>
+                <div className="point">
                     {
                         slide === 1 ? (
                             <div className="medium-point"/>

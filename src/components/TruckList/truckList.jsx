@@ -1,10 +1,10 @@
 'use strict';
 
 import React, {useEffect} from "react";
-import Request from "@Components/Request/request";
 import mock from "@Helpers/mock";
 import {X} from 'react-feather';
 import Truck from "@Components/Truck/truck";
+import "./truckList.css";
 
 const $ = require('jquery');
 require('jquery-ui');
@@ -12,14 +12,36 @@ require('jquery-ui/ui/widgets/sortable');
 require('jquery-ui/ui/disable-selection');
 
 const TruckList = () => {
+    const [copyTrucks, setCopyTrucks] = React.useState([])
     const [trucks, setTrucks] = React.useState([])
-    const [truck, setTruck] = React.useState(null);
     const [haveError, setHaveError] = React.useState(false);
     const [errorText, setErrorText] = React.useState("error");
-
+    const sendTruck = () => {
+        const truckList = $("#secondList").children();
+        if (truckList.length === 1) {
+            const truckId = parseInt(truckList[0].id.split('_')[1]);
+            const truckObj = $("#truck_" + truckId);
+            truckObj.remove();
+        } else if (!truckList || !truckList.length) {
+            setErrorText("Перетащите машину которую хотите выпустить");
+            setHaveError(true);
+        } else {
+            setErrorText(`вы перетащили ${truckList.length} машин, а должны были 1`);
+            setHaveError(true);
+        }
+    }
     const closeAlert = () => {
         setHaveError(false);
         setErrorText("");
+    }
+    const filterTrucks = (e) => {
+        const text = e.target.value;
+        if(text){
+            setTrucks(copyTrucks.filter(x=>x.name.startsWith(text)));
+        }
+        else{
+            setTrucks(copyTrucks);
+        }
     }
     useEffect(() => {
         if (screen.width < 600) {
@@ -40,7 +62,7 @@ const TruckList = () => {
         });
         const trucksBasic = mock.getAllTrucks()
         setTrucks(trucksBasic);
-
+        setCopyTrucks(trucksBasic);
     }, []);
     useEffect(() => {
         if (haveError) {
@@ -55,6 +77,7 @@ const TruckList = () => {
         }
     }, [haveError])
     return (<div className="handle-list">
+        <input type="text" className="search-input" placeholder="номер машины" onChange={filterTrucks} />
         {
             haveError && (
                 <div className="alert" role="alert" id="error">
@@ -71,19 +94,19 @@ const TruckList = () => {
                 </div>)
         }
         <section className="handle-list-section">
-            <h2 className="handle-list-section-title">Новые погрузки</h2>
+            <h2 className="handle-list-section-title">Машины в очереди</h2>
             <ul className="handle-list-first handle-list-object" id="firstList">
                 {
-                    trucks.map(truck => (<Truck truck={truck} key={"truck " + truck.id}/>))
+                    trucks && trucks.map(truck => (<Truck truck={truck} key={"truck " + truck.id}/>))
                 }
             </ul>
         </section>
         <section className="handle-list-section q-mt-2">
-            <h2 className="handle-list-section-title">Отсортированные погрузки</h2>
-            <ul className="handle-list-object" id="secondList">
+            <h2 className="handle-list-section-title">Машина на вьезд</h2>
+            <ul className="track-list-object" id="secondList">
 
             </ul>
-            <button type="button" className="handle-list-btn handle-list-next-btn">
+            <button type="button" className="handle-list-btn handle-list-next-btn" onClick={sendTruck}>
                 Впустить машину
             </button>
         </section>

@@ -3,6 +3,7 @@
     font-weight: 800;
     line-height: 30px;
     font-family: 'Inter', sans-serif;
+    width: 30px;
 }
 .header {
     padding: 12px 105px;
@@ -12,8 +13,6 @@
     display: flex;
     align-items: stretch;
     justify-content: space-between;
-    padding-left: 10%;
-    padding-right: 10%;
 }
 .pointer{
     cursor: pointer;
