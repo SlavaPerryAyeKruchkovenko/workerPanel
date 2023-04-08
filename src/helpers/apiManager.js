@@ -35,6 +35,9 @@ const apiManager = {
         axios.post("http://10.68.44.55:3001/data/post", payload, apiManager.getConfig())
     },
 
+    get_all_users: () => {
+        return axios.get("http://10.68.44.55:3001/auth/user/all", apiManager.getConfig())
+    },
 
     currentUser: (token) => {
         return axios.get(apiManager.url + "/user/me",  apiManager.getConfig(token));
