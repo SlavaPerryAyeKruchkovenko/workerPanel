@@ -17,7 +17,7 @@ const apiManager = {
         }, apiManager.getConfig());
     },
 
-    admin_fill: (payload,token) => {
+    admin_fill: (payload, token) => {
         axios.post(apiManager.url + "/data/post", payload, apiManager.getConfig(token)).then(response => {
             // Process response data here
             console.log(payload)
@@ -34,7 +34,7 @@ const apiManager = {
         axios.post(apiManager.url + "/data/post", payload, apiManager.getConfig())
     },
 
-    getAllUsers: (token,factoryId) => {
+    getAllUsers: (token, factoryId) => {
         return axios.get(apiManager.url + "/auth/user/all?factory_id=1", apiManager.getConfig(token))
     },
 
@@ -51,37 +51,37 @@ const apiManager = {
         return axios.get(apiManager.url + `/place?typePlace=checkpoint&factory_id=${factoryId}`, apiManager.getConfig(token));
     },
     logout: (token) => {
-        return axios.post(apiManager.url + "/auth/logout", {},apiManager.getConfig(token));
+        return axios.post(apiManager.url + "/auth/logout", {}, apiManager.getConfig(token));
     },
-    getAllCars: (token,user) => {
+    getAllCars: (token, user) => {
         return axios.get(apiManager.url + `/truck/all/noarrived?factory_id=${user.factory_id}`, apiManager.getConfig(token))
     },
-    arrivedTruck: (token,truckId) => {
-        return axios.post(apiManager.url + `/truck/arrived`,{
+    arrivedTruck: (token, truckId) => {
+        return axios.post(apiManager.url + `/truck/arrived`, {
             truck_id: truckId
         }, apiManager.getConfig(token))
     },
-    getFreeGates: (token,factoryId) => {
+    getFreeGates: (token, factoryId) => {
         return axios.get(apiManager.url + `/place?typePlace=gate&factory_id=${factoryId}`, apiManager.getConfig(token));
     },
-    endSession: (token,placeId) => {
+    endSession: (token, placeId) => {
         return axios.post(apiManager.url + "/place/final", {
             place_id: placeId
-        },apiManager.getConfig(token));
+        }, apiManager.getConfig(token));
     },
-    getAllArrivedTruck: (token,factoryId) => {
+    getAllArrivedTruck: (token, factoryId) => {
         return axios.get(apiManager.url + `/truck/all/arrived?factory_id=${factoryId}`, apiManager.getConfig(token));
     },
-    blockRequests:(token, blockedCar) => {
-        return axios.post(apiManager.url + "/truck/blocked",{
+    blockRequests: (token, blockedCar) => {
+        return axios.post(apiManager.url + "/truck/blocked", {
             blocked_car: blockedCar
-        },apiManager.getConfig(token));
+        }, apiManager.getConfig(token));
     },
     deleteTruck: (token, trackId) => {
-        return axios.post(apiManager+"/truck/delete",{truck_id:trackId},apiManager.getConfig(token));
+        return axios.post(apiManager.url + "/truck/delete", {truck_id: trackId}, apiManager.getConfig(token));
     },
-    unblockCars: (token) => {
-
+    unblockCars: (token,trackId) => {
+        return axios.post(apiManager.url + "/truck/unblocked", {truck_id: trackId}, apiManager.getConfig(token));
     }
 }
 

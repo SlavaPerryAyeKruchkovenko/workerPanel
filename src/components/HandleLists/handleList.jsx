@@ -41,14 +41,21 @@ const HandleList = ({user,token}) => {
     const nextCar = () => {
         if (saveRequests && saveRequests.length > 0) {
             onDragNDrop();
-            const requestId = "request_" + saveRequests[0].id;
-            apiManager.deleteTruck(token,requestId).then(value=>{
-
+            console.log(saveRequests);
+            apiManager.deleteTruck(token,saveRequests[0].id).then(value=>{
+                const requestId = "request_" + saveRequests[0].id;
                 const requestObj = $(`#${requestId}`);
                 requestObj.removeClass("accept-request");
                 requestObj.remove();
                 setBtnState({id: 1, name: "взять работу"});
+                saveRequests.shift()
+                saveRequests.forEach(value=>{
+                    apiManager.unblockCars(token,value.id).then(value => {
+
+                    })
+                })
             })
+
         }
     }
     const offDragNDrop = () => {
