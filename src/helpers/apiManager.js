@@ -61,8 +61,16 @@ const apiManager = {
             truck_id: truckId
         }, apiManager.getConfig(token))
     },
-    getGates: (token) => {
-
+    getFreeGates: (token,factoryId) => {
+        return axios.get(apiManager.url + `/place?typePlace=gate&factory_id=${factoryId}`, apiManager.getConfig(token));
+    },
+    endSession: (token,placeId) => {
+        return axios.post(apiManager.url + "/place/final", {
+            place_id: placeId
+        },apiManager.getConfig(token));
+    },
+    getAllArrivedTruck: (token,factoryId) => {
+        return axios.get(apiManager.url + `/truck/all/arrived?factory_id=${factoryId}`, apiManager.getConfig(token));
     }
 }
 

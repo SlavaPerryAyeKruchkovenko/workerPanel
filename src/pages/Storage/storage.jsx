@@ -14,6 +14,9 @@ const Storage = () => {
     const [haveSession, setHaveSession] = React.useState(false)
     const [token, setToken] = React.useState("");
     const [user, setUser] = React.useState(null);
+    const [selectedGate, setSelectedGate] = React.useState({
+        id: undefined, name: "Выберите ворота",
+    })
     const loginBody = {
         backgroundImage: 'url(' + backgroundImage + ')'
     }
@@ -21,9 +24,26 @@ const Storage = () => {
         apiManager.logout(token).then(() => {
             localStorage.removeItem("token");
             navigate("/login");
-        }).catch(e=>{
+        }).catch(e => {
             console.log(e)
         })
+    }
+    const sendSelectGate = () => {
+        apiManager.placeStart(token, selectedGate.id, user.id).then(value => {
+            if (value.data) {
+
+            }
+        })
+    }
+    const canOpenSecondFragment = () => {
+        return (selectedGate && selectedGate.id);
+    }
+    const endSession = () => {
+        if (canOpenSecondFragment()) {
+            apiManager.endSession(token, selectedGate.id).then(() => {
+                navigate("/login");
+            })
+        }
     }
     useEffect(() => {
         const token = localStorage.getItem("token");
@@ -35,13 +55,15 @@ const Storage = () => {
             }
         })
     }, [])
-    return (
-        <div className="storage">
-            <Header haveEndSession={haveSession} haveExit={true} exit={logout}/>
-            <div className="storage-body" style={loginBody} id="storage">
-                <Slider setHaveSession={setHaveSession}
-                        slides={[<DropChanger user={user} token={token}/>, <HandleList/>]}/>
-            </div>
-        </div>)
+    return (<div className="storage">
+        <Header haveEndSession={haveSession} haveExit={true} exit={logout} endSession={endSession}/>
+        <div className="storage-body" style={loginBody} id="storage">
+            <Slider setHaveSession={setHaveSession} secondCallback={sendSelectGate}
+                    canOpenSecondFragment={canOpenSecondFragment()}
+                    slides={[<DropChanger user={user} token={token} selectedGate={selectedGate}
+                                          setSelectedGate={setSelectedGate}/>,
+                        <HandleList user={user} token={token}/>]}/>
+        </div>
+    </div>)
 }
 export default Storage;

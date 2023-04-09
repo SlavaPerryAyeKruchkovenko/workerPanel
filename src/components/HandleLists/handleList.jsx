@@ -5,13 +5,14 @@ import "./handleList.css";
 import Request from "@Components/Request/request";
 import mock from "@Helpers/mock";
 import {X} from 'react-feather';
+import apiManager from "@Helpers/apiManager";
 
 const $ = require('jquery');
 require('jquery-ui');
 require('jquery-ui/ui/widgets/sortable');
 require('jquery-ui/ui/disable-selection');
 
-const HandleList = () => {
+const HandleList = ({user,token}) => {
     const [requests, setRequests] = React.useState([]);
     const [btnState, setBtnState] = React.useState({id: 1, name: "взять работу"});
     const [haveError, setHaveError] = React.useState(false);
@@ -113,6 +114,14 @@ const HandleList = () => {
             return () => clearInterval(interval);
         }
     }, [haveError])
+
+    useEffect(()=>{
+        if(token && user){
+            apiManager.getAllArrivedTruck(token,user.factory_id).then(value => {
+                console.log(value);
+            })
+        }
+    },[user,token])
     return (<div className="handle-list">
         {
             haveError && (
