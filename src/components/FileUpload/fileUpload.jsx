@@ -56,7 +56,8 @@ function handleDrop(e) {
         if (i+chunkSize >= json.length)
             final_json["final"] = true
         console.log(final_json)
-        apiManager.admin_fill(final_json)
+          const token = localStorage.getItem("token");
+        apiManager.admin_fill(final_json,token)
       }
 
       

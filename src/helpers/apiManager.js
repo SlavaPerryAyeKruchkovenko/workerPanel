@@ -17,8 +17,8 @@ const apiManager = {
         }, apiManager.getConfig());
     },
 
-    admin_fill: (payload) => {
-        axios.post(apiManager.url + "/data/post", payload, apiManager.getConfig()).then(response => {
+    admin_fill: (payload,token) => {
+        axios.post(apiManager.url + "/data/post", payload, apiManager.getConfig(token)).then(response => {
             // Process response data here
             console.log(payload)
             console.log(response.data)
@@ -34,8 +34,8 @@ const apiManager = {
         axios.post(apiManager.url + "/data/post", payload, apiManager.getConfig())
     },
 
-    getAllUsers: (token) => {
-        return axios.get(apiManager.url + "/auth/user/all", apiManager.getConfig(token))
+    getAllUsers: (token,factoryId) => {
+        return axios.get(apiManager.url + "/auth/user/all?factory_id=1", apiManager.getConfig(token))
     },
 
     currentUser: (token) => {
@@ -71,6 +71,17 @@ const apiManager = {
     },
     getAllArrivedTruck: (token,factoryId) => {
         return axios.get(apiManager.url + `/truck/all/arrived?factory_id=${factoryId}`, apiManager.getConfig(token));
+    },
+    blockRequests:(token, blockedCar) => {
+        return axios.post(apiManager.url + "/truck/blocked",{
+            blocked_car: blockedCar
+        },apiManager.getConfig(token));
+    },
+    deleteTruck: (token, trackId) => {
+        return axios.post(apiManager+"/truck/delete",{truck_id:trackId},apiManager.getConfig(token));
+    },
+    unblockCars: (token) => {
+
     }
 }
 

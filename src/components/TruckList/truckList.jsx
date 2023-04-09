@@ -40,7 +40,7 @@ const TruckList = ({token,user}) => {
     const filterTrucks = (e) => {
         const text = e.target.value;
         if(text){
-            setTrucks(copyTrucks.filter(x=>x.name.startsWith(text)));
+            setTrucks(copyTrucks.filter(x=>x.car_number.startsWith(text)));
         }
         else{
             setTrucks(copyTrucks);

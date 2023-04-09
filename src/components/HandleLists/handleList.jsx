@@ -42,10 +42,13 @@ const HandleList = ({user,token}) => {
         if (saveRequests && saveRequests.length > 0) {
             onDragNDrop();
             const requestId = "request_" + saveRequests[0].id;
-            const requestObj = $(`#${requestId}`);
-            requestObj.removeClass("accept-request");
-            requestObj.remove();
-            setBtnState({id: 1, name: "взять работу"});
+            apiManager.deleteTruck(token,requestId).then(value=>{
+
+                const requestObj = $(`#${requestId}`);
+                requestObj.removeClass("accept-request");
+                requestObj.remove();
+                setBtnState({id: 1, name: "взять работу"});
+            })
         }
     }
     const offDragNDrop = () => {
@@ -59,12 +62,16 @@ const HandleList = ({user,token}) => {
     const saveRequest = () => {
         const requestsEl = $("#secondList").children();
         const saveRequests = [];
+
         for (let request of requestsEl) {
             const id = request.id.split("_")[1];
             const element = requests.find(x => x.id === parseInt(id));
             saveRequests.push(element);
         }
         setSaveRequests(saveRequests);
+        apiManager.blockRequests(token,saveRequests).then(value=>{
+            console.log(value);
+        })
     }
     const getBtnSubmit = (state) => {
         switch (state.id) {
@@ -98,8 +105,6 @@ const HandleList = ({user,token}) => {
                 $("#storage").removeClass("body-auto");
             }
         });
-        const requestBasic = mock.getAllRequest()
-        setRequests(requestBasic);
 
     }, []);
     useEffect(() => {
@@ -118,7 +123,7 @@ const HandleList = ({user,token}) => {
     useEffect(()=>{
         if(token && user){
             apiManager.getAllArrivedTruck(token,user.factory_id).then(value => {
-                console.log(value);
+                setRequests(value.data);
             })
         }
     },[user,token])
