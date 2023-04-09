@@ -17,8 +17,8 @@ const CheckPoint = () => {
     const [user, setUser] = React.useState(null);
     const navigate = useNavigate();
     const sendSelectCheckpoint = () => {
-        apiManager.placeStart(token,selectedCheckpoint.id,user.id).then(value => {
-            console.log(value)
+        apiManager.placeStart(token, selectedCheckpoint.id, user.id).then(value => {
+
         })
     }
     const canChangeSlide = () => {
@@ -31,7 +31,7 @@ const CheckPoint = () => {
         apiManager.logout(token).then(() => {
             localStorage.removeItem("token");
             navigate("/login");
-        }).catch(e=>{
+        }).catch(e => {
             console.log(e)
         })
     }
@@ -53,7 +53,8 @@ const CheckPoint = () => {
                     <CheckpointChanger selectedCheckpoint={selectedCheckpoint}
                                        setSelectedCheckpoint={setSelectedCheckpoint}
                                        user={user} token={token}/>,
-                    <TruckList/>]} canOpenSecondFragment={canChangeSlide()} secondCallback={sendSelectCheckpoint}/>
+                    <TruckList token={token} user={user}/>]} canOpenSecondFragment={canChangeSlide()}
+                        secondCallback={sendSelectCheckpoint}/>
             </div>
         </div>);
 }

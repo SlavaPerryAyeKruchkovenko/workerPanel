@@ -52,6 +52,17 @@ const apiManager = {
     },
     logout: (token) => {
         return axios.post(apiManager.url + "/auth/logout", {},apiManager.getConfig(token));
+    },
+    getAllCars: (token,user) => {
+        return axios.get(apiManager.url + `/truck/all/noarrived?factory_id=${user.factory_id}`, apiManager.getConfig(token))
+    },
+    arrivedTruck: (token,truckId) => {
+        return axios.post(apiManager.url + `/truck/arrived`,{
+            truck_id: truckId
+        }, apiManager.getConfig(token))
+    },
+    getGates: (token) => {
+
     }
 }
 

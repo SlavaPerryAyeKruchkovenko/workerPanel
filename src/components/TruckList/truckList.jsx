@@ -5,13 +5,14 @@ import mock from "@Helpers/mock";
 import {X} from 'react-feather';
 import Truck from "@Components/Truck/truck";
 import "./truckList.css";
+import apiManager from "@Helpers/apiManager";
 
 const $ = require('jquery');
 require('jquery-ui');
 require('jquery-ui/ui/widgets/sortable');
 require('jquery-ui/ui/disable-selection');
 
-const TruckList = () => {
+const TruckList = ({token,user}) => {
     const [copyTrucks, setCopyTrucks] = React.useState([])
     const [trucks, setTrucks] = React.useState([])
     const [haveError, setHaveError] = React.useState(false);
@@ -20,8 +21,10 @@ const TruckList = () => {
         const truckList = $("#secondList").children();
         if (truckList.length === 1) {
             const truckId = parseInt(truckList[0].id.split('_')[1]);
-            const truckObj = $("#truck_" + truckId);
-            truckObj.remove();
+            apiManager.arrivedTruck(token,truckId).then(value => {
+                const truckObj = $("#truck_" + truckId);
+                truckObj.remove();
+            })
         } else if (!truckList || !truckList.length) {
             setErrorText("Перетащите машину которую хотите выпустить");
             setHaveError(true);
@@ -60,9 +63,6 @@ const TruckList = () => {
                 $("#storage").removeClass("body-auto");
             }
         });
-        const trucksBasic = mock.getAllTrucks()
-        setTrucks(trucksBasic);
-        setCopyTrucks(trucksBasic);
     }, []);
     useEffect(() => {
         if (haveError) {
@@ -76,6 +76,15 @@ const TruckList = () => {
             return () => clearInterval(interval);
         }
     }, [haveError])
+    useEffect(()=>{
+        if(token && user){
+            apiManager.getAllCars(token,user).then(value=>{
+                setTrucks(value.data)
+                setCopyTrucks(value.data)
+            })
+        }
+
+    },[token,user]);
     return (<div className="handle-list">
         <input type="text" className="search-input" placeholder="номер машины" onChange={filterTrucks} />
         {
