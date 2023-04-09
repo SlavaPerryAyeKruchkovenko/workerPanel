@@ -1,21 +1,26 @@
 import React from "react";
 import "./slider.css";
 
-const Slider = ({setHaveSession,slides=[]}) => {
+const Slider = ({setHaveSession,slides=[],canOpenSecondFragment,secondCallback=()=>{}}) => {
     const [slide, setSlide] = React.useState(1);
     const [haveSave,setHaveSave] = React.useState(true);
-    const openFirstFragment = () => {
+    /*const openFirstFragment = () => {
         if(setHaveSession){
             setHaveSession(false);
         }
         setSlide(1);
-    }
+    }*/
     const openSecondFragment = () => {
-        if (setHaveSession) {
-            setHaveSession(true);
+        if(canOpenSecondFragment){
+            if(secondCallback){
+                secondCallback();
+            }
+            if (setHaveSession) {
+                setHaveSession(true);
+            }
+            setSlide(2);
+            setHaveSave(false);
         }
-        setSlide(2);
-        setHaveSave(false);
     }
 
     const getSlides = (slide) => {

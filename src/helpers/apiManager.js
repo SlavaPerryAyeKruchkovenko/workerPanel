@@ -1,46 +1,57 @@
 import axios from "axios";
 
 const apiManager = {
-
-    getConfig:(token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2ODA5Njg2NzUsImV4cCI6MTY4MTA1NTA3NX0.__glWjModwpyTf3WWnWfJ7izrUHDPkhfembetVHY7TM") => {
+    url: "http://10.68.44.55:3001",
+    getConfig: (token = null) => {
         return {
             headers: {
                 "Authorization": 'Bearer ' + token,
                 "Content-Type": 'application/json'
-
             }
         }
     },
     login: (login, password) => {
-        return axios.post(apiManager.url + "/login", {
+        return axios.post(apiManager.url + "/auth/login", {
             login: login,
             password: password,
         }, apiManager.getConfig());
     },
 
     admin_fill: (payload) => {
-        axios.post("http://10.68.44.55:3001/data/post", payload, apiManager.getConfig()).then(response => {
+        axios.post(apiManager.url + "/data/post", payload, apiManager.getConfig()).then(response => {
             // Process response data here
             console.log(payload)
             console.log(response.data)
             return response.data;
-          })
-          .catch(error => {
-            // Handle error here
-            console.log(error);
-          });
+        })
+            .catch(error => {
+                // Handle error here
+                console.log(error);
+            });
     },
 
     admin_save: (payload) => {
-        axios.post("http://10.68.44.55:3001/data/post", payload, apiManager.getConfig())
+        axios.post(apiManager.url + "/data/post", payload, apiManager.getConfig())
     },
 
-    get_all_users: () => {
-        return axios.get("http://10.68.44.55:3001/auth/user/all", apiManager.getConfig())
+    getAllUsers: (token) => {
+        return axios.get(apiManager.url + "/auth/user/all", apiManager.getConfig(token))
     },
 
     currentUser: (token) => {
-        return axios.get(apiManager.url + "/user/me",  apiManager.getConfig(token));
+        return axios.get(apiManager.url + "/auth/user/me", apiManager.getConfig(token));
+    },
+    placeStart: (token, placeId, userId) => {
+        return axios.post(apiManager.url + "/place/start", {
+            place_id: placeId,
+            user_id: userId
+        }, apiManager.getConfig(token));
+    },
+    getFreeCheckpoint: (token, factoryId) => {
+        return axios.get(apiManager.url + `/place?typePlace=checkpoint&factory_id=${factoryId}`, apiManager.getConfig(token));
+    },
+    logout: (token) => {
+        return axios.post(apiManager.url + "/auth/logout", {},apiManager.getConfig(token));
     }
 }
 

@@ -1,8 +1,9 @@
 import React, {useEffect} from "react";
 import "./dropChanger.css";
+import apiManager from "@Helpers/apiManager";
 const $ = require('jquery');
 
-const DropChanger = () => {
+const DropChanger = ({user,token}) => {
     const [isOpen, setIsOpen] = React.useState(false);
     const [gates, setGates] = React.useState([]);
     const [selectedGate,setSelectedGate] = React.useState({
@@ -17,29 +18,13 @@ const DropChanger = () => {
     }
     useEffect(() => {
         $("#storage").removeClass("body-auto");
-        setGates([
-            {
-                id: 1,
-                name: "Северные ворота",
-            },
-            {
-                id: 2,
-                name: "Восточные ворота",
-            },
-            {
-                id: 3,
-                name: "Южные ворота",
-            },
-            {
-                id: 4,
-                name: "Западные ворота",
-            },
-            {
-                id: 5,
-                name: "Юго-восточные ворота",
-            }
-        ])
     }, []);
+    useEffect(()=>{
+        if(token && user){
+
+
+        }
+    },[token,user])
     return (
         <div className="drop-changer">
             <div className="drop-changer-scheme">

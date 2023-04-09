@@ -139,7 +139,7 @@ const HandleList = () => {
         </section>
         <section className="handle-list-section q-mt-2">
             <h2 className="handle-list-section-title">Отсортированные погрузки</h2>
-            <ul className="handle-list-object" id="secondList">getBtnSubmit
+            <ul className="handle-list-object" id="secondList">
 
             </ul>
             {

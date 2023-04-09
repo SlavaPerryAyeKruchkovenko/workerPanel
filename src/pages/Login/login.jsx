@@ -4,6 +4,7 @@ import backgroundImage from "@Assets/images/фон.png"
 import Header from "@Components/Header/Header.jsx";
 import apiManager from "@Helpers/apiManager";
 import {useNavigate} from "react-router-dom";
+import redirect from "@Helpers/redirect";
 
 const Login = () => {
     const navigate = useNavigate();
@@ -13,11 +14,7 @@ const Login = () => {
         backgroundImage: 'url(' + backgroundImage + ')'
     }
     const checkUser = (token) => {
-        console.log(token)
-        apiManager.currentUser(token).then(value => {
-            console.log(value)
-        });
-        /*navigate("/storage");*/
+        redirect.redirect(navigate,token)
     }
     const login = (e) => {
         if (e) {
