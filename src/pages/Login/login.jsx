@@ -42,7 +42,7 @@ const Login = () => {
             <div className="login-body-content">
                 <span className="login-body-content-header">Войти</span>
                 <form className="login-body-form" onSubmit={login} method="post">
-                    <input placeholder="логин" type="text" defaultValue="Slava" required ref={loginRef}/>
+                    <input placeholder="логин" type="text"  required ref={loginRef}/>
                     <input placeholder="пароль" type="password" defaultValue="12345" required ref={passwordRef}/>
                     <div className="login-body-form-bottom">
                         <a href="#" className="forgot-btn">Не помню пароль</a>

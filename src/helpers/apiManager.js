@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiManager = {
-    url: "http://10.68.44.55:3001",
+    url: "https://ex1-nw2u.onrender.com",
     getConfig: (token = null) => {
         return {
             headers: {
