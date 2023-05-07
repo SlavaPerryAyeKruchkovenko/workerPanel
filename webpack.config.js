@@ -3,6 +3,7 @@ const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     mode: NODE_ENV,
@@ -80,6 +81,11 @@ module.exports = {
     },
     devtool: NODE_ENV === 'production' ? undefined : 'source-map',
     plugins: [
+        new CopyWebpackPlugin({
+            patterns: [
+                { from: 'static' }
+            ]
+        }),
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: 'index.html',
